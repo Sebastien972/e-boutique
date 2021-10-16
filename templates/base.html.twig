@@ -5,15 +5,56 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% block stylesheets %} {{ encore_entry_link_tags('app') }}{% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('page') }}
+    {% endblock %}
 
     <title>{% block title %}boutique{% endblock %}</title>
 </head>
 <body>
-{% block body %}
-{% endblock %}
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+    {% block nav %}
+        <div class="grey">
+            <ul class="nav justify-content-end  container">
+                <li class="nav-item">
+                    <a class="nav-link active " aria-current="page" href="{{ path('app_register') }}">Inscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="btnConextion" data-bs-toggle="modal" data-bs-target="#conextionModal" >Conextion</a>
+                </li>
+            </ul>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container position-relative">
+                <a class="navbar-brand position-absolute top-50 start-50 translate-middle navbar-brand" href="#">MyBoutique</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link  active" aria-current="page" href="#">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Boutique</a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="nav-link active" href="#"><i class="fas fa-cart-arrow-down"></i>Pagnier</a>
+            </div>
+        </nav>
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+    {% block footer %}
+
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('page') }}
+    {% endblock %}
 </body>
 </html>
