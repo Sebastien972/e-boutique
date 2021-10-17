@@ -1,0 +1,30 @@
+
+a
+{
+    text-decoration: none;
+}
+
+/*nav*/
+.grey
+{
+    background-color: #6c757d;
+}
+
+
+/* card register    */
+.card-register
+{
+    margin-top: 30px;
+    width: 65%;
+    box-shadow: 1px 1px 10px #AAAAAA;
+    border-radius: 2%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#btn-register
+{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
