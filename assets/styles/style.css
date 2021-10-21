@@ -28,3 +28,37 @@ a
     left: 50%;
     transform: translateX(-50%);
 }
+#containerAccount
+{
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#containerInfoAccount
+{
+    width: 65%;
+    height: 100%;
+    position: relative;
+    z-index: 122;
+}
+#ContainerNavAccount
+{
+    width: 35%;
+}
+.infoAccount
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #6f42c1;
+    opacity: 0;
+}
+.visible
+{
+    opacity: 1;
+}
+.navAccount
+{
+    cursor: pointer;
+}

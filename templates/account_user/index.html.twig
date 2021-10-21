@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountUserController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center">Compte d'utillisateur</h1>
+    <div id="containerAccount">
+        <div id="ContainerNavAccount">
+            <p class="navAccount" id="profilAccount">Profil</p>
+            <p class="navAccount" id="mesCommandesAccout">Mes commandes</p>
+            <p class="navAccount" id="mesAdressesAcount">Mes adresses</p>
+            <p class="navAccount">Déconnexion</p>
+        </div>
+        <div id="containerInfoAccount">
+            <div class="infoAccount" id="templatProfil"></div>
+            <div class="infoAccount visible" style="background-color: #1a1e21 !important;" id="templatMesComandes" ></div>
+            <div class="infoAccount" id="templatMesAdresse"></div>
+            <div class="infoAccount"></div>
+        </div>
+    </div>
+
+
+
+</div>
+{% endblock %}
