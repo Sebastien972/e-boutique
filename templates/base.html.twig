@@ -16,12 +16,26 @@
     {% block nav %}
         <div class="grey">
             <ul class="nav justify-content-end  container">
-                <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="{{ path('app_register') }}">Inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="btnConextion" data-bs-toggle="modal" data-bs-target="#conextionModal" >Conextion</a>
-                </li>
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">Héllo ! {{ app.user.firstname }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Déconextion</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" id="btnConextion" href="{{ path('app_login') }}" >Conextion</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_EDITOR') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{path('admin_dashboard')}}">Back-office</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
 
@@ -41,7 +55,7 @@
                         </li>
                     </ul>
                 </div>
-                <a class="nav-link active" href="#"><i class="fas fa-cart-arrow-down"></i>Pagnier</a>
+                <a class="nav-link active text-black-50" href="#"><i class="fas fa-cart-arrow-down"></i>Pagnier</a>
             </div>
         </nav>
     {% endblock %}
