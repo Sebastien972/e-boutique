@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminPropertyController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+
+        {% if items | length > 0 %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <th scope="row"></th>
+                        <td>
+
+
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tfoot>
+            </table>
+        {% else %}
+
+
+        {% endif %}
+    </div>
+
+{% endblock %}

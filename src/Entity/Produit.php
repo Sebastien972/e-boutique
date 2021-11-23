@@ -35,7 +35,7 @@ class Produit
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $catégorie;
+    private $categorie;
 
     public function getId(): ?int
     {
@@ -78,14 +78,14 @@ class Produit
         return $this;
     }
 
-    public function getCatégorie(): ?string
+    public function getCategorie(): ?string
     {
-        return $this->catégorie;
+        return $this->categorie;
     }
 
-    public function setCatégorie(string $catégorie): self
+    public function setCategorie(string $categorie): self
     {
-        $this->catégorie = $catégorie;
+        $this->catégorie = $categorie;
 
         return $this;
     }

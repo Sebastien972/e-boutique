@@ -16,7 +16,35 @@
         <div id="containerInfoAccount">
             <div class="infoAccount" id="templatProfil"></div>
             <div class="infoAccount visible" style="background-color: #1a1e21 !important;" id="templatMesComandes" ></div>
-            <div class="infoAccount" id="templatMesAdresse"></div>
+
+            <div class=" infoAccount" id="templatMesAdresse">
+                <div class="card-header text-center">
+                    Mes adresses
+                </div>
+                    <div class="row">
+                        {% if app.user.adresses %}
+                            <p>2 adpidl</p>
+                            {% for adresse in adresse %}
+                                {{ app.use.adresses|length }}
+                                    <div class="card text-center col-6" >
+                                        <div class="card-body">
+                                            <p>{{ adresse.fullName }}<br>
+                                            {{ adresse.address }} {{ adresse.complement }}<br>
+                                                {{ adresse.city }} {{ adresse.bodepostal }}<br>
+                                                {{ adresse.country }}</p>
+                                            <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-primary">Modifié</a>
+                                            {{ include('adresse/_delete_form.html.twig') }}
+
+                                            <a href="{{ path('adresse_delete', {'id': adresse.id}) }}" class="btn btn-danger">Supprimé</a>
+                                        </div>
+                                    </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>vous n'avez pas encore d'addresse</p>
+                        {% endif %}
+                    </div>
+            </div>
+
             <div class="infoAccount"></div>
         </div>
     </div>

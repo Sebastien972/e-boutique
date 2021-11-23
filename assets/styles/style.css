@@ -1,4 +1,7 @@
-
+*
+{
+    margin: 0;
+}
 a
 {
     text-decoration: none;
@@ -51,12 +54,11 @@ a
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #6f42c1;
-    opacity: 0;
+    display: none
 }
 .visible
 {
-    opacity: 1;
+    display: block;
 }
 .navAccount
 {
