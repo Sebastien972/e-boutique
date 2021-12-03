@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    article
+{% endblock %}
+{% block body %}
+    <div class='container-fuild'>
+    <div class='col-sm row'>
+
+    <div class="col-6" >
+        <img src="/assets/upload/produit/{{ produit.image }}" class="card-img-top" alt="image du produi">
+    </div>
+    <div class="col-6">
+        <h5 class="card-title">{{produit.nom}}</h5>
+        <p class="card-text">{{ produit.prix}} <span class="green">€</span></p>
+        <p>{{ produit.description }}</p>
+        <p>{{ produit.plusInfos }}</p>
+        <P>{{ produit.prix/100 }}€</P>
+{#        <a href="{{path('panier',{'id':article.id})}}" class="green"><i class="fas fa-cart-arrow-down"></i>  Ajouté aux panier</a>#}
+    </div>
+
+{%endblock %}
