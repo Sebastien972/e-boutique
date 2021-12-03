@@ -55,9 +55,12 @@
                         </li>
                     </ul>
                 </div>
-                <a class="nav-link active text-black-50" href="#"><i class="fas fa-cart-arrow-down"></i>Pagnier</a>
+                <a class="nav-link active text-black-50" href="{{ path('cart') }}"><i class="fas fa-cart-arrow-down"></i>Pagnier</a>
             </div>
         </nav>
+        <pre>
+            {{ dump(app.session) }}
+        </pre>
     {% endblock %}
 
     {% block body %}
