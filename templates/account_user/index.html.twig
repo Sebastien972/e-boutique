@@ -22,10 +22,9 @@
                     Mes adresses
                 </div>
                     <div class="row">
-                        {% if app.user.adresses %}
-                            <p>2 adpidl</p>
-                            {% for adresse in adresse %}
-                                {{ app.use.adresses|length }}
+                        {% if adresse %}
+                            {% for adresse in adress %}
+                                <p>{{ adresse | length }} trové</p>
                                     <div class="card text-center col-6" >
                                         <div class="card-body">
                                             <p>{{ adresse.fullName }}<br>
@@ -40,7 +39,7 @@
                                     </div>
                             {% endfor %}
                         {% else %}
-                            <p>vous n'avez pas encore d'addresse</p>
+                            <p>vous n'avez pas encore d'addresse cliké <a href="{{ path('adresse_new') }}">ici</a></p>
                         {% endif %}
                     </div>
             </div>
