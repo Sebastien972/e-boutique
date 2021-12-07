@@ -175,4 +175,17 @@ class Adresse
 
         return $this;
     }
+    public function __toString()
+    {
+        $result = $this->fullName."<br>";
+        $result .= $this->address."<br>";
+        if ($this->getNomEntreprise()){
+            $result .= $this->nomEntreprise."<br>";
+
+        }
+        $result .= $this->complement."<br>";
+        $result .= $this->bodepostal."<br>";
+        $result .= $this->country."<br>";
+        return $result;
+    }
 }
