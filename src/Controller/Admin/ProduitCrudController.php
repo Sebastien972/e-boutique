@@ -28,7 +28,7 @@ class ProduitCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            SlugField::new('slug')->setTargetFieldName('nom'.'id')->hideOnForm(),
+            SlugField::new('slug')->setTargetFieldName('nom')/*->hideOnForm()*/,
             IntegerField::new('quantity'),
             TextField::new('nom'),
             TextEditorField::new('description'),

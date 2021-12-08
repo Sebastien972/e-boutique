@@ -22,10 +22,12 @@
                     Mes adresses
                 </div>
                     <div class="row">
+                        <pre>
+            {{ dump(app.user.adresses) }}
+        </pre>
                         {% if app.user.adresses %}
-                            <p>2 adpidl</p>
-                            {% for adresse in adresse %}
-                                {{ app.use.adresses|length }}
+                            <p>{{ app.user.adresses | length }} adresses enregistrer</p>
+                            {% for adresse in app.user.adresses %}
                                     <div class="card text-center col-6" >
                                         <div class="card-body">
                                             <p>{{ adresse.fullName }}<br>
@@ -39,8 +41,10 @@
                                         </div>
                                     </div>
                             {% endfor %}
+                                            <a href="{{ path('adresse_new') }}" class="btn btn-danger">ajoute une adresse</a>
+
                         {% else %}
-                            <p>vous n'avez pas encore d'addresse</p>
+                            <p>vous n'avez pas encore d'addresse cliké <a href="{{ path('adresse_new') }}">ici</a></p>
                         {% endif %}
                     </div>
             </div>

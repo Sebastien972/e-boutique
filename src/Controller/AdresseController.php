@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Adresse;
 use App\Form\AdresseType;
 use App\Repository\AdresseRepository;
+use App\Services\CartServices;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,7 @@ class AdresseController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, CartServices $cartServices): Response
     {
         $adresse = new Adresse();
         $form = $this->createForm(AdresseType::class, $adresse);
@@ -45,7 +46,10 @@ class AdresseController extends AbstractController
             $entityManager->persist($adresse);
             $entityManager->flush();
 
-            return $this->redirectToRoute('adresse_index', [], Response::HTTP_SEE_OTHER);
+            if ($cartServices->getFullCart()){
+                return $this->redirectToRoute('checkout');
+            }
+            return $this->redirectToRoute('account_user');
         }
 
         return $this->renderForm('adresse/new.html.twig', [
