@@ -11,7 +11,7 @@
                     <div class="heading_s1">
                         <h4>Your delivery Address</h4>
                         <div class="content">
-                            {{ form_widget(form.adresse) }}
+                            {{ form_widget(form.adresse)| replace({'[spr]':'<br>','FR':'france'})| raw }}
                         </div>
                     </div>
                     <div class="heading_s1">

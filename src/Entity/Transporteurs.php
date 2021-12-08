@@ -115,7 +115,7 @@ class Transporteurs
     {
         $result = $this->nom."<br>";
         $result .= $this->description."<br>";
-        $result .= $this->prix." €"."<br>";
+        $result .= $this->prix." €"."/<br>";
         return $result;
     }
 }

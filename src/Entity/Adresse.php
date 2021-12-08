@@ -177,15 +177,16 @@ class Adresse
     }
     public function __toString()
     {
-        $result = $this->fullName."<br>";
-        $result .= $this->address."<br>";
+
+        $result = $this->fullName."[spr]";
+        $result .= $this->address."[spr]";
         if ($this->getNomEntreprise()){
-            $result .= $this->nomEntreprise."<br>";
+            $result .= $this->nomEntreprise."[spr]";
 
         }
-        $result .= $this->complement."<br>";
-        $result .= $this->bodepostal."<br>";
-        $result .= $this->country."<br>";
+        $result .= $this->complement."[spr]";
+        $result .= $this->bodepostal."[spr]";
+        $result .= $this->country."[spr]";
         return $result;
     }
 }
