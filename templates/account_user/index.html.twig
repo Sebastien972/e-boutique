@@ -18,7 +18,7 @@
             <div class="infoAccount visible" style="background-color: #1a1e21 !important;" id="templatMesComandes" ></div>
 
             <div class=" infoAccount" id="templatMesAdresse">
-                <div class="card-header text-center">
+                <div class="card-header text-center mb-5">
                     Mes adresses
                 </div>
                     <div class="row">
@@ -28,20 +28,19 @@
                         {% if app.user.adresses %}
                             <p>{{ app.user.adresses | length }} adresses enregistrer</p>
                             {% for adresse in app.user.adresses %}
-                                    <div class="card text-center col-6" >
+                                    <div class="card text-center col-6 mb-5" >
                                         <div class="card-body">
                                             <p>{{ adresse.fullName }}<br>
                                             {{ adresse.address }} {{ adresse.complement }}<br>
                                                 {{ adresse.city }} {{ adresse.bodepostal }}<br>
                                                 {{ adresse.country }}</p>
-                                            <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-primary">Modifié</a>
+                                            <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-outline-secondary mb-2">Modifié</a>
                                             {{ include('adresse/_delete_form.html.twig') }}
 
-                                            <a href="{{ path('adresse_delete', {'id': adresse.id}) }}" class="btn btn-danger">Supprimé</a>
                                         </div>
                                     </div>
                             {% endfor %}
-                                            <a href="{{ path('adresse_new') }}" class="btn btn-danger">ajoute une adresse</a>
+                                            <a href="{{ path('adresse_new') }}" class="btn btn-outline-secondary mb-5">ajoute une adresse</a>
 
                         {% else %}
                             <p>vous n'avez pas encore d'addresse cliké <a href="{{ path('adresse_new') }}">ici</a></p>

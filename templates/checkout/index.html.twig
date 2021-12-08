@@ -12,13 +12,15 @@
                         <h4>Your delivery Address</h4>
                         <div class="content">
                             {{ form_widget(form.adresse)| replace({'[spr]':'<br>','FR':'france'})| raw }}
+                            <a href="{{ path('adresse_new') }}" class="btn-Secondary btn">ajoute une adresse</a>
+
                         </div>
                     </div>
                     <div class="heading_s1">
                         <h4>Your carrier</h4>
                         <div class="content">
 
-                            {{ form_widget(form.transporteur) }}
+                            {{ form_widget(form.transporteur) | replace({'[spr]':'<br>','FR':'france'})| raw }}
 
                         </div>
                     </div>

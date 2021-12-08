@@ -113,9 +113,9 @@ class Transporteurs
     }
     public function __toString()
     {
-        $result = $this->nom."<br>";
-        $result .= $this->description."<br>";
-        $result .= $this->prix." €"."/<br>";
+        $result = $this->nom."[spr]";
+        $result .= $this->description."[spr]";
+        $result .= ($this->prix/100)." €"."[spr]";
         return $result;
     }
 }
