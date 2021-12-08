@@ -5,25 +5,27 @@
 {% block body %}
     <div class="section">
         <div class="container">
+            {{ form_start(form) }}
             <div class="row">
                 <div class="col-md-6">
                     <div class="heading_s1">
                         <h4>Your delivery Address</h4>
                         <div class="content">
-
+                            {{ form_widget(form.adresse) }}
                         </div>
                     </div>
                     <div class="heading_s1">
                         <h4>Your carrier</h4>
                         <div class="content">
 
+                            {{ form_widget(form.transporteur) }}
 
                         </div>
                     </div>
                     <div class="heading_s1">
                         <h4>Additional information</h4>
                         <div class="form-group mb-0">
-                            <textarea name="name" rows="8" cols="50"></textarea>
+                            {{ form_widget(form.information) }}
                         </div>
                     </div>
                 </div>
@@ -77,6 +79,7 @@
                     </div>
                 </div>
             </div>
+            {{ form_end(form) }}
         </div>
     </div>
 

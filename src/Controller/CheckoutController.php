@@ -19,6 +19,7 @@ class CheckoutController extends AbstractController
         $user = $this->getUser();
 
         $cart = $cartServices->getFullCart();
+        $total = $cartServices->getTotalCart();
 
         if (empty($cart)){
            return $this->redirectToRoute('home');
@@ -27,15 +28,15 @@ class CheckoutController extends AbstractController
             return $this->redirectToRoute('adresse_new');
 
         }
-        $form = $this->createForm(CheckoutFormType::class,null,['user'=>$user]);
+        $form = $this->createForm(CheckoutFormType::class,null,['user' => $user]);
 
         $form->handleRequest($request);
 
 
         return $this->render('checkout/index.html.twig', [
-            'cart' => $cart, 'cart' => $cart,
+            'cart' => $cart,
             'total'=> $total,
-            'form'=> $form->createView()
+            'form'=> $form->createView(),
         ]);
     }
 }

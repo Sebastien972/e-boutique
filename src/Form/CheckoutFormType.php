@@ -13,14 +13,17 @@ class CheckoutFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $user = $options['user'];
+
+
         $builder
             ->add('adresse',EntityType::class,[
-                'class'=>Adresse::class,
-                'required'=>true,
-                'choices'=> $user->getAdresses(),
-                'multiple'=>false,
-                'expanded'=> true,
+                'class' => Adresse::class,
+                'required' =>true,
+                'choices' => $user->getAdresses(),
+                'multiple' =>false,
+                'expanded' => true,
             ])
             ->add('transporteur', EntityType::class,[
                 'class'=> Transporteurs::class,
@@ -35,7 +38,7 @@ class CheckoutFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'user'=> array(),
         ]);
     }
 }

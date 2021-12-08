@@ -26,8 +26,8 @@
             {{ dump(app.user.adresses) }}
         </pre>
                         {% if app.user.adresses %}
+                            <p>{{ app.user.adresses | length }} adresses enregistrer</p>
                             {% for adresse in app.user.adresses %}
-                                <p>{{ adresse | length }} adresses enregistrer</p>
                                     <div class="card text-center col-6" >
                                         <div class="card-body">
                                             <p>{{ adresse.fullName }}<br>
@@ -41,6 +41,8 @@
                                         </div>
                                     </div>
                             {% endfor %}
+                                            <a href="{{ path('adresse_new') }}" class="btn btn-danger">ajoute une adresse</a>
+
                         {% else %}
                             <p>vous n'avez pas encore d'addresse cliké <a href="{{ path('adresse_new') }}">ici</a></p>
                         {% endif %}
