@@ -44,14 +44,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
+                                {% for item in cart %}
                                 <tr>
-                                    <td> Product Name <span class="product-qty">x 1</span></td>
-                                    <td>$ 50</td>
+                                    <td>{{ item.product.nom }}<span class="product-qty"> x {{ item.quantity }}</span></td>
+                                    <td>{{ item.product.prix/100 }}</td>
                                 </tr>
-                                <tr>
-                                    <td> Product Name <span class="product-qty">x 1</span></td>
-                                    <td>$ 50</td>
-                                </tr>
+                                {% endfor %}
+
                                 </tbody>
                                 <tfoot>
                                 <tr>

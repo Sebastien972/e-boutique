@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
+{% block stylePage %}
+    {{ encore_entry_link_tags('home') }}
 
+{% endblock %}
 {% block title %}accueil{% endblock %}
 
 
@@ -23,20 +26,7 @@
 
             <div class="container_carousel row">
                 {% for produit in infoProduit %}
-                   {# <div class="carousel col-sm-12 col-md-3">
-                        <div class='col'>
-                            <img src="/assets/upload/produit/{{ produit.image }}"  alt="image du produit">
-                        </div>
-                        <div class="col">
-                            <div class="infoProdui row">
-                                <h3 class="col-8"></h3>
-                                <p class="col-4 prixProduit">prix <span>€</span></p>
-                            </div>
-                            <div>
-                                <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
-                            </div>
-                        </div>
-                    </div>#}
+
                     <div class="col-3" >
                         <a href="{{ path('produit',{slug: produit.slug}) }}">
                             <img src="/assets/upload/produit/{{ produit.image }}" class="card-img-top" alt="...">
@@ -51,6 +41,167 @@
                     </div>
                 {% endfor %}
 
+                <div>
+                    <div class="container-md container-fluid">
+                        <div id="ctnVideo">
+                            <video src="video/Rainy Day - 5278.mp4" id="video" autoplay ></video>
+                            <div class="containerText">
+                                <h1 id="titreVideo" class="txtVideo" id='titreVideo'>MyBoutique</h1>
+                                <p class="txtVideo" id="textVideo">le grand pour tous sans le covid</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="container-md container-fluid">
+
+                    <h2>Nos meilleur vente</h2>
+                    <div class="owl-nav">
+                        <div class="owl-prev">prev</div>
+                        <div class="owl-next">next</div>
+                    </div>
+                    <div class="owl-carousel">
+
+
+
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1040/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1025/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1026/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1027/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1028/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1029/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1031/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1025/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel">
+                            <div class='col'>
+                                <img src="https://picsum.photos/id/1025/550/900" class="img-fluid" alt="image du produit">
+                            </div>
+                            <div class="col">
+                                <div class="infoProdui row">
+                                    <h3 class="col-8">Nom du produit</h3>
+                                    <p class="col-4 prixProduit">prix <span>€</span></p>
+                                </div>
+                                <div>
+                                    <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                </div>
+
 
 
             </div>
@@ -58,3 +209,8 @@
         </div>
     </secti>
 {% endblock %}
+ {% block scriptPage %}
+     {{ encore_entry_script_tags('home') }}
+{#     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>#}
+
+ {% endblock %}
