@@ -1,5 +1,6 @@
 import './styles/home.css';
-import './styles/homeSript.js';
+import './homeSript.js';
 
 const $ = require('jquery');
 global.$ = global.jQuery = $;
+

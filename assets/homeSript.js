@@ -1,3 +1,5 @@
+
+console.log('ojlkimyutrgthyukhiljkù');
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel({
         margin: 30,
@@ -13,7 +15,7 @@ $(document).ready(function(){
                 loop:true,
             },
             1000:{
-                items:1,
+                items:3,
                 center: false
             }
         },
@@ -29,3 +31,4 @@ $(document).ready(function(){
     })
 
 });
+

@@ -19,6 +19,7 @@ class CartServices
 
 
     /**
+     * @param $panier
      */
     public function updateCart($panier)
     {
@@ -79,7 +80,7 @@ class CartServices
     {
         $panier = $this->session->get('panier', []);
 
-        $dataPanier= [];
+        $dataPanier = [];
 
         foreach ($panier as $id => $quantity) {
             $produit = $this->produitRepository->find($id);

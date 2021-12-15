@@ -5,29 +5,35 @@
 {% block body %}
     <div class="section">
         <div class="container">
-            {{ form_start(form, {action: path('checkout_confirm')}) }}
             <div class="row">
                 <div class="col-md-6">
                     <div class="heading_s1">
-                        <h4>Your delivery Address</h4>
+                        <h4>vérrifier votre Addresse</h4>
                         <div class="content">
-                            {{ form_widget(form.adresse)| replace({'[spr]':'<br>','FR':'france'})| raw }}
-                        </div>
-                    </div>
-                    <div class="heading_s1">
-                        <h4>Your carrier</h4>
-                        <div class="content">
-
-                            {{ form_widget(form.transporteur) }}
+                            {{ adresse | replace({'[spr]':'<br>','FR':'france'})| raw }}
+                            <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-outline-secondary">Modifié</a>
+                            <a href="{{ path('checkout') }}" class="btn btn-outline-secondary">changer d'adresse</a>
 
                         </div>
                     </div>
+
                     <div class="heading_s1">
-                        <h4>Additional information</h4>
-                        <div class="form-group mb-0">
-                            {{ form_widget(form.information) }}
+                        <h4>votre transporteur</h4>
+                        <div class="content">
+
+                            {{transporteur }}
+
                         </div>
                     </div>
+                    {% if info %}
+                        <div class="heading_s1">
+                            <h4>Information complémentaire</h4>
+                            <div class="form-group mb-0">
+                                {{ info }}
+                            </div>
+                        </div>
+                    {% endif %}
+
                 </div>
 
                 <div class="col-md-6">
@@ -46,22 +52,22 @@
                                 <tbody>
 
                                 {% for item in cart %}
-                                <tr>
-                                    <td>{{ item.product.nom }}<span class="product-qty"> x {{ item.quantity }}</span></td>
-                                    <td>{{ item.product.prix/100 }}</td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ item.product.nom }}<span class="product-qty"> x {{ item.quantity }}</span></td>
+                                        <td>{{ item.product.prix/100 }}</td>
+                                    </tr>
                                 {% endfor %}
 
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>SubTotal HT</th>
-                                    <td class="product-subtotal">$100</td>
+                                    <th>trasporteur</th>
+                                    <td class="product-subtotal">{{ transporteur.prix/100 }}</td>
                                 </tr>
 
                                 <tr>
                                     <th>Total</th>
-                                    <td class="product-subtotal">{{ total/100 }}</td>
+                                    <td class="product-subtotal">{{ (total/100) + (transporteur.prix/100)}}</td>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -72,14 +78,10 @@
                             </div>
 
                         </div>
-                        <a href="" class="btn">
-
-                        <button type="submit" id="checkout-button"  class="btn btn-fill-out btn-block">Place Order</button>
-                        </a>
+                        <button type="submit" id="checkout-button" class="btn btn-fill-out btn-block">Place Order</button>
                     </div>
                 </div>
             </div>
-            {{ form_end(form) }}
         </div>
     </div>
 
