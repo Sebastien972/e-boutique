@@ -12,7 +12,7 @@
                         <div class="content">
                             {{ adresse | replace({'[spr]':'<br>','FR':'france'})| raw }}
                             <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-outline-secondary">Modifié</a>
-                            <a href="{{ path('checkout') }}" class="btn btn-outline-secondary">changer d'adresse</a>
+                            <a href="{{ path('checkout_edit') }}" class="btn btn-outline-secondary">changer d'adresse</a>
 
                         </div>
                     </div>
