@@ -58,3 +58,13 @@ p{
 {
     text-align: end;
 }
+
+.imageProduit
+{
+    height: 450px;
+}
+.owlNav
+{
+    display: flex;
+    justify-content: flex-end;
+}

@@ -106,12 +106,12 @@ class CheckoutController extends AbstractController
     }
 
     /**
-     * @Route ('/checkout/edit', name="checkout_edit")
+     * @Route ("/checkout/edit", name="checkout_edit")
      */
     public function checkoutEdit()
     {
         $this->session->set('checkout_data',[]);
-        $this->redirectToRoute('checkout');
+       return $this->redirectToRoute('checkout');
     }
 
 

@@ -24,7 +24,7 @@
     <section>
         <div class="container-md container-fluid">
             <h2>Nos meilleur vente</h2>
-            <div class="owl-nav">
+            <div class="owlNav">
                 <div class="owl-prev">prev</div>
                 <div class="owl-next">next</div>
             </div>
@@ -34,7 +34,9 @@
 
                 <div class="carousel">
                     <div class='col'>
-                        <img src="/assets/upload/produit/{{ meilleurVente.image }}" class="img-fluid" alt="image du produit">
+                        <a href="{{ path('produit',{slug:meilleurVente.slug}) }}">
+                            <img src="/assets/upload/produit/{{ meilleurVente.image }}" class="imageProduit" alt="image du produit">
+                        </a>
                     </div>
                     <div class="col">
                         <div class="infoProdui row">
@@ -59,14 +61,14 @@
         </div>
     </section>
 {% endblock %}
- {% block scriptPage %}
 
+
+
+
+ {% block scriptPage %}
      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
      {{ encore_entry_script_tags('home') }}
      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
-
  {% endblock %}
 
 

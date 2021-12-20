@@ -92,7 +92,7 @@ class AdresseController extends AbstractController
                 $this->session->set('checkout_data', $data);
                 return $this->redirectToRoute('checkout_confirm');
             }
-            return $this->redirectToRoute('adresse_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('account_user', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('adresse/edit.html.twig', [
@@ -112,6 +112,6 @@ class AdresseController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('adresse_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('account_user', [], Response::HTTP_SEE_OTHER);
     }
 }

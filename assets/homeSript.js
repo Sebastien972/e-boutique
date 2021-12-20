@@ -5,7 +5,6 @@ $(document).ready(function(){
         margin: 30,
         //loop: true,
         items: 4,
-        nav:true,
         responsive:{
             0:{
                 items:1,
@@ -20,6 +19,10 @@ $(document).ready(function(){
             }
         },
     });
+    let owl = $('.owl-carousel');
+    owl.owlCarousel();
+
+
     $('.owl-prev').click(function() {
         owl.trigger('next.owl.carousel');
     })
