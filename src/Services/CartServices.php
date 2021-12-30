@@ -75,7 +75,10 @@ class CartServices
 
     }
 
-
+    /**
+     * @return array
+     *
+     */
     public function getFullCart():array
     {
         $panier = $this->session->get('panier', []);
