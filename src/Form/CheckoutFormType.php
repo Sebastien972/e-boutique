@@ -6,6 +6,7 @@ use App\Entity\Adresse;
 use App\Entity\Transporteurs;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -31,7 +32,10 @@ class CheckoutFormType extends AbstractType
                 'multiple'=>false,
                 'expanded'=> true,
             ])
-            ->add('information')
+            ->add('information',TextareaType::class, [
+                'required'=>false,
+
+            ])
         ;
     }
 

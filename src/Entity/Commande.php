@@ -70,6 +70,21 @@ class Commande
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $quantity;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $subTotalTTC;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $taxe;
+
     public function __construct()
     {
         $this->detaileCommandes = new ArrayCollection();
@@ -214,6 +229,42 @@ class Commande
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getSubTotalTTC(): ?float
+    {
+        return $this->subTotalTTC;
+    }
+
+    public function setSubTotalTTC(float $subTotalTTC): self
+    {
+        $this->subTotalTTC = $subTotalTTC;
+
+        return $this;
+    }
+
+    public function getTaxe(): ?float
+    {
+        return $this->taxe;
+    }
+
+    public function setTaxe(float $taxe): self
+    {
+        $this->taxe = $taxe;
 
         return $this;
     }

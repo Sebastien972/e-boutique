@@ -1,0 +1,70 @@
+p{
+    font-size: 16px;
+}
+*{
+    /*background-color: red;*/
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+#ctnVideo
+{
+    position: relative;
+    height: auto;
+}
+#video
+{
+    position: relative;
+    width: 100%;
+}
+.containerText
+{
+    position: relative;
+    color: white;
+    z-index: 11;
+    /* width: 100%;
+     height: 100%;
+     bottom: 270px;*/
+    transform: translateX(-0%);
+
+}
+.txtVideo
+{
+    /* left: 70px; */
+    padding-left: 80px;
+    width: 50%;
+    position: relative;
+}
+#textVideo
+{
+    font-size: 1.8em;
+}
+#titreVideo
+{
+    font-size: 4.5em;
+}
+
+/* section nos meilleur produit */
+
+
+
+.infoProduit
+{
+    display: flex;
+    justify-content: space-between;
+}
+.prixProduit
+{
+    text-align: end;
+}
+
+.imageProduit
+{
+    height: 450px;
+}
+.owlNav
+{
+    display: flex;
+    justify-content: flex-end;
+}

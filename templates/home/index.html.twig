@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block stylePage %}
-    <link rel="stylesheet" href="">
+
+    {{ encore_entry_link_tags('home') }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock %}
 
 {% block title %}accueil{% endblock %}
@@ -20,44 +22,55 @@
         </div>
     </div>
 </section>
-    <secti>
-        <div class="container-md container-fluid" >
-            <h2>Nos meilleur vente</h2>
 
-            <div class="container_carousel row">
-                {% for produit in infoProduit %}
-                   {# <div class="carousel col-sm-12 col-md-3">
-                        <div class='col'>
-                            <img src="/assets/upload/produit/{{ produit.image }}"  alt="image du produit">
-                        </div>
-                        <div class="col">
-                            <div class="infoProdui row">
-                                <h3 class="col-8"></h3>
-                                <p class="col-4 prixProduit">prix <span>€</span></p>
-                            </div>
-                            <div>
-                                <p>desciption courte de l'article afiché voiudpo jdlmmh sp pjmomojm...</p>
-                            </div>
-                        </div>
-                    </div>#}
-                    <div class="col-3" >
-                        <a href="{{ path('produit',{slug: produit.slug}) }}">
-                            <img src="/assets/upload/produit/{{ produit.image }}" class="card-img-top" alt="...">
+    <section>
+        <div class="container-md container-fluid">
+            <h2>Nos meilleur vente</h2>
+            <div class="owlNav">
+                <div class="owl-prev">prev</div>
+                <div class="owl-next">next</div>
+            </div>
+            <div class="owl-carousel">
+                {% for meilleurVente in meilleurVente %}
+
+
+                <div class="carousel">
+                    <div class='col'>
+                        <a href="{{ path('produit',{slug:meilleurVente.slug}) }}">
+                            <img src="/assets/upload/produit/{{ meilleurVente.image }}" class="imageProduit" alt="image du produit">
                         </a>
-                        <div class="card-body">
-                            <div class="row">
-                                <h5 class="title">{{produit.nom}}</h5>
-                                <p class="text">{{produit.prix/100}} <span>€</span></p>
-                            </div>
-                            <p class="card-text">{{produit.description}}</p>
+                    </div>
+                    <div class="col">
+                        <div class="infoProdui row">
+                            <h3 class="col-8">{{ meilleurVente.nom }}</h3>
+                            <p class="col-4 prixProduit">{{ meilleurVente.prix/100 }}<span>€</span></p>
+                        </div>
+                        <div>
+                            <p>{{ meilleurVente.description }}</p>
                         </div>
                     </div>
+                </div>
                 {% endfor %}
-
-
-
             </div>
 
         </div>
-    </secti>
+    </section>
+    <section>
+        <div class="container-md container-fluid" >
+            <h2>Catégorie</h2>
+
+
+        </div>
+    </section>
 {% endblock %}
+
+
+
+
+ {% block scriptPage %}
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+     {{ encore_entry_script_tags('home') }}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ {% endblock %}
+
+

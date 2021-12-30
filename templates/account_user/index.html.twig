@@ -34,7 +34,9 @@
                                             {{ adresse.address }} {{ adresse.complement }}<br>
                                                 {{ adresse.city }} {{ adresse.bodepostal }}<br>
                                                 {{ adresse.country }}</p>
-                                            <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-outline-secondary mb-2">Modifié</a>
+
+                                            <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-outline-secondary">Modifié</a>
+
                                             {{ include('adresse/_delete_form.html.twig') }}
 
                                         </div>
