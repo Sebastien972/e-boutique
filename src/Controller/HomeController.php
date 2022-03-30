@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Repository\CategoriesRepository;
 use App\Repository\ProduitRepository;
 use http\Env\Request;
 use phpDocumentor\Reflection\Types\This;
@@ -15,14 +16,16 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ProduitRepository $produitRepository): Response
+    public function index(ProduitRepository $produitRepository, CategoriesRepository $categoriesRepository): Response
     {
         $produit = $produitRepository->findAll();
+        $categorie = $categoriesRepository->findAll();
         $meilleurVente =$produitRepository->findByMeilleurVente(1);
            // dd([$produit, $meilleurVente]);
         return $this->render('home/index.html.twig', [
             'meilleurVente' => $meilleurVente,
-            'infoProduit' => $produit
+            'infoProduit' => $produit,
+            'categorie' => $categorie,
         ]);
     }
 

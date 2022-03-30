@@ -28,14 +28,14 @@
                 <div class="owl-prev">prev</div>
                 <div class="owl-next">next</div>
             </div>
-            <div class="owl-carousel">
+            <div class="owl-carousel meilleurVenteCarousel">
                 {% for meilleurVente in meilleurVente %}
 
 
                 <div class="carousel">
                     <div class='col'>
                         <a href="{{ path('produit',{slug:meilleurVente.slug}) }}">
-                            <img src="/assets/upload/produit/{{ meilleurVente.image }}" class="imageProduit" alt="image du produit">
+                            <img src="{#/assets/upload/produit/#}{{ meilleurVente.image }}" class="imageProduit" alt="image du produit">
                         </a>
                     </div>
                     <div class="col">
@@ -55,7 +55,25 @@
     </section>
     <section>
         <div class="container-md container-fluid" >
+
             <h2>Catégorie</h2>
+            <div class="owlNav">
+                <div class="prev">prev</div>
+                <div class="next">next</div>
+            </div>
+            <div class="categorieCarousel owl-carousel">
+                {% for categorie in categorie %}
+                    <div class="carousel">
+                        <div class="card bg-dark text-white">
+                            <img src="{{ categorie.image }}" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">{{ categorie.name }}</h5>
+                                <p class="card-text">{{ categorie.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
 
         </div>

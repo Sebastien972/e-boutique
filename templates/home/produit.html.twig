@@ -16,6 +16,9 @@
         <p>{{ produit.description }}</p>
         <p>{{ produit.plusInfos }}</p>
         <P>{{ produit.prix/100 }}€</P>
+        <pre>
+            {{ dump(produit.categorie) }}
+        </pre>
         <a href="{{path('add',{'id':produit.id})}}" class="green"><i class="fas fa-cart-arrow-down"></i>  Ajouté aux panier</a>
     </div>
 

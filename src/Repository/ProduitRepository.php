@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Produit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 
 /**
  * @method Produit|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,31 +21,77 @@ class ProduitRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Produit[] Returns an array of Produit objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    // * @return Produit[] Returns an array of Produit objects
+    // */
+    // public function findCategorie($categorie = null)
+    // {
+    //     $query =$this->createQueryBuilder('p');
 
-    /*
-    public function findOneBySomeField($value): ?Produit
+    //     if($categorie ==! null){
+    //         // $query->join('p.categories', 'c')
+    //         ->andWhere('p.id = :categorie')
+    //         ->setParameter(":categorie", $categorie)
+    //         ;
+    //     }
+
+
+    //     // return $query->getQuery()->getResult();
+    // }
+
+
+    public function getPaginatedProduit($page, $limit, $filters = null)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+
+        $query = $this->createQueryBuilder('p')
+        ->select('c','p')
+        ->leftjoin('p.categorie', 'c');
+
+        if ($filters != null ) {
+            $query->where('c IN (:cats)')
+            ->setParameter('cats', array_values($filters));
+        }
+        
+        $query->setFirstResult(($page * $limit)- $limit)
+        ->setMaxResults($limit)
         ;
+
+        return $query->getQuery()->getResult();
+
     }
-    */
+
+
+
+
+    
+   
+
+    public function getTotalProduit($filters = null)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->join('p.categorie', 'c');
+        ;
+        if ($filters != null ) {
+            $query->where('c IN (:cats)')
+            ->setParameter('cats', array_values($filters));
+        }
+        
+        return $query->getQuery()->getSingleScalarResult();
+
+    }
+
+    public function search($mots)
+    {
+        $query = $this->createQueryBuilder('p');
+
+        if ($mots != null ) {
+            $query->where('MATCH_AGAINST(p.nom, p.description) AGAINST(:mots boolean) >0')
+            ->setParameter('mots', $mots);
+        }
+
+        return $query->getQuery()->getResult();
+
+
+    }
+
 }

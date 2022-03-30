@@ -6,7 +6,7 @@
     <h1>Create new Adresse</h1>
     {% if app.flashes %}
 
-    {% for message in app.flashes.checkout_message %}
+    {% for message in app.flashes('checkout_message') %}
 
     <div class="alert alert-danger" role="alert">
 

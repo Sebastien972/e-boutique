@@ -4,6 +4,8 @@
 namespace App\Services;
 
 
+use App\Entity\Cart;
+use App\Entity\DetaileCart;
 use Doctrine\ORM\EntityManagerInterface;
 
 class OrderServices
@@ -19,11 +21,45 @@ class OrderServices
 
     }
 
-    public function saveCart($cart, $user)
+    /**
+     * @param $data représent les donné a enregisté dans l'entité
+     * @param $user l'utilisateur a qui apartien les donne
+     */
+    public function saveCart($data, $user)
     {
 
+        $reference = $this->generateUuid();
+        $adress = $data['checkout']['adresse'];
+        $transporteur = $data['checkout']['tansporteur'];
+        $information = $data['checkout']['information'];
+        $cart = (new Cart())
+            ->setCreatedAt(new \DateTime())
+            ->setReference($reference)
+            ->setTransporteurs($transporteur->getNom)
+            ->setTransporteurPrix($transporteur->getPrix)
+            ->setFullName($adress->getFullName)
+            ->setAdresse($adress)
+            ->setQuantity($data['data']['quantity_cart'])
+            ->setPlusInfos($information)
+            ->setSubTotalTTC($data['data']['subTotalTTC']+$transporteur->getPrix()/100)
+            ->setUser($user)
+        ;
+
+        $this->manager->persist($cart);
+
+
+        $cart_detail = [];
+        foreach ($data['produduit'] as $produir)
+            $cart_detail = new DetaileCart();
+
+
     }
-    public function generateUuid()
+
+    /**
+     * @return string
+     * génere un code Uuid
+     */
+    public function generateUuid(): string
     {
         mt_srand((double)microtime()*10000);
 

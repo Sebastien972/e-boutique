@@ -18,10 +18,17 @@ abstract class BaseFixture extends Fixture
 {
 
     private $manager;
+
     /**
      * @var Generator
      */
     protected  $faker;
+
+    /**
+     * Listes de références vers des entités
+     * @var string[][] un tableau contenant des tableaux de chaînes de caractères
+     */
+    private $references = [];
 
 
     /**
@@ -70,6 +77,40 @@ abstract class BaseFixture extends Fixture
             $this->addReference($reference, $entity);
         }
     }
+
+    /**
+     * Récupérer 1 entité de manière aléatoire
+     * @param string $groupName le nom commun aux références dans lesquelles rechercher
+     * @return object une entité du groupe demandé
+     */
+    protected function getRandomReference(string $groupName): object
+    {
+        // Si le groupe demandé est inconnu, on recherche les références
+        if (!isset($this->references[$groupName])) {
+            $this->references[$groupName] = [];
+
+            // On parcourt l'ensemble des références
+            foreach ($this->referenceRepository->getReferences() as $refName => $val) {
+                // $refName = référence d'un objet (exemple: produit_42)
+                // On vérifie si $refName commence par $groupName
+                // (sa position dans $refName doit être à 0)
+                if (strpos($refName, $groupName.'_') === 0) {
+                    $this->references[$groupName][] = $refName;
+                }
+            }
+        }
+
+        // On vérifie que l'on ait trouvé des références
+        if ($this->references[$groupName] === []) {
+            throw new \Exception(sprintf('Aucun référence trouvée pour le groupe "%s"', $groupName));
+        }
+
+        // Récupération aléatoire d'un objet associé à une référence du groupe
+        $randomRefName = $this->faker->randomElement($this->references[$groupName]);
+        return $this->getReference($randomRefName);
+    }
+
+
 
 
 }

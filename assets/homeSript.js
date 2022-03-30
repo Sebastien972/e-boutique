@@ -1,7 +1,8 @@
 
-console.log('ojlkimyutrgthyukhiljkù');
 $(document).ready(function(){
-    $(".owl-carousel").owlCarousel({
+    let owl = $('.owl-carousel');
+
+    owl.owlCarousel({
         margin: 30,
         //loop: true,
         items: 4,
@@ -19,19 +20,34 @@ $(document).ready(function(){
             }
         },
     });
-    let owl = $('.owl-carousel');
-    owl.owlCarousel();
+    let meilleurVentCarousel = $('.meilleurVenteCarousel')
+    meilleurVentCarousel.owlCarousel();
 
 
     $('.owl-prev').click(function() {
-        owl.trigger('next.owl.carousel');
+        meilleurVentCarousel.trigger('prev.owl.carousel');
     })
     // Go to the previous item
     $('.owl-next').click(function() {
         // With optional speed parameter
         // Parameters has to be in square bracket '[]'
-        owl.trigger('prev.owl.carousel');
+        meilleurVentCarousel.trigger('next.owl.carousel');
     })
+
+    let categorieCarousel = $('.categorieCarousel')
+    categorieCarousel.owlCarousel();
+
+
+    $('.prev').click(function() {
+        categorieCarousel.trigger('prev.owl.carousel');
+    })
+    // Go to the previous item
+    $('.next').click(function() {
+        // With optional speed parameter
+        // Parameters has to be in square bracket '[]'
+        categorieCarousel.trigger('next.owl.carousel');
+    })
+
 
 });
 

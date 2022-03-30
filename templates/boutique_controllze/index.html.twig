@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block stylePage %}
+    {{ encore_entry_link_tags('boutique') }}
+{% endblock %}
+{% block title %}{% endblock %}
+
+{% block body %}
+{% set queryParam = app.request.query.all %}
+
+    <div class="container">
+        <div class="row">
+            {{form(form)}}
+            <div class="col-3">
+                <div class="col">
+
+                    <ul class="list-group list-group-flush">
+                        <form id="filtre">
+                        {% for categorie in categorie %}
+                            {% if queryParam is not empty and queryParam.categorie is defined%}
+                                {% set checked = (categorie.id in queryParam.categorie)? 'checked' : '' %}
+                            {% else %}
+                                {% set checked = "" %}
+                            {% endif %}
+                            <li class="list-group-item"><input name="categorie[]" id="categorie{{ categorie.id }}" type="checkbox" value="{{ categorie.id }}" {{checked}}>
+                                <label for="categorie{{ categorie.id }}">{{ categorie.name }}</label></li>
+                        {%  endfor %}
+                        </form>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row" id="boutique">
+                
+                {% include "boutique_controllze/_boutique.html.twig" %}
+                
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+    {% block scriptPage %}
+        {{ encore_entry_script_tags('boutique') }}
+    {% endblock %}

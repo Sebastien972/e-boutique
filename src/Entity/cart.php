@@ -47,7 +47,7 @@ class Cart
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isPaid ;
+    private $isPaid = false;
 
     /**
      * @ORM\Column(type="text", nullable=true)

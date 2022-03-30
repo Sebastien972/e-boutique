@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block stylPage %}
+    {{ encore_entry_link_tags('user_account') }}
+{% endblock %}
 {% block title %}Hello AccountUserController!{% endblock %}
 
 {% block body %}
@@ -55,4 +57,8 @@
 
 
 </div>
+{% endblock %}
+
+{% block scriptPage %}
+    {{ encore_entry_script_tags('user_account') }}
 {% endblock %}
