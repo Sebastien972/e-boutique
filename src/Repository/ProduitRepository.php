@@ -20,23 +20,7 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
-    // /**
-    // * @return Produit[] Returns an array of Produit objects
-    // */
-    // public function findCategorie($categorie = null)
-    // {
-    //     $query =$this->createQueryBuilder('p');
-
-    //     if($categorie ==! null){
-    //         // $query->join('p.categories', 'c')
-    //         ->andWhere('p.id = :categorie')
-    //         ->setParameter(":categorie", $categorie)
-    //         ;
-    //     }
-
-
-    //     // return $query->getQuery()->getResult();
-    // }
+   
 
 
     public function getPaginatedProduit($page, $limit, $filters = null)
@@ -51,7 +35,7 @@ class ProduitRepository extends ServiceEntityRepository
             ->setParameter('cats', array_values($filters));
         }
         
-        $query->setFirstResult(($page * $limit)- $limit)
+        $query->setFirstResult(($page * $limit) - $limit)
         ->setMaxResults($limit)
         ;
 

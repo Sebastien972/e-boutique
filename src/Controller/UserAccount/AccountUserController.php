@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\UserAccount;
 
 use App\Repository\AdresseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

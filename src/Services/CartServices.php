@@ -69,7 +69,7 @@ class CartServices
         $this->updateCart($panier);
     }
 
-    public function removeAllCart(int $id):void
+    public function removeAllCart():void
     {
         $this->updateCart([]);
 
@@ -84,32 +84,41 @@ class CartServices
         $panier = $this->session->get('panier', []);
 
         $dataPanier = [];
+        $quantityCart = 0;
+        $subTotal = 0;
+
 
         foreach ($panier as $id => $quantity) {
             $produit = $this->produitRepository->find($id);
             if ($produit){
 
-                $dataPanier [] = [
-                    'product'=> $produit,
-                    'quantity'=>$quantity,
+                $dataPanier['produit'][] = [
+                    'produit'=> $produit,
+                    'quantity'=>$quantity
                 ];
+                $quantityCart += $quantity;
+                $subTotal += $produit->getPrix()* $quantity;
             }else{
                 $this->remove($id);
             }
 
         }
+        $dataPanier['data']=[
+            'quantityCart'=> $quantityCart,
+            'subTotall' => $subTotal,
+        ];
         return $dataPanier;
     }
 
-    public function getTotalCart():float
-    {
-        $total = 0;
-        foreach($this->getFullCart() as $item ) {
-            $total += $item['product']->getPrix()*$item['quantity'];
+    // public function getTotalCart():float
+    // {
+    //     $total = 0;
+    //     foreach($this->getFullCart() as $item ) {
+    //         $total += $item['produit']->getPrix()*$item['quantity'];
 
-        }
-        return $total;
-    }
+    //     }
+    //     return $total;
+    // }
 
 
 

@@ -26,10 +26,8 @@ window.onload = () => {
 
                 //génération de l'url de la page actuel
                 const url = new URL(window.location.href)
+                console.log('dhjgkjfhdgsf');
 
-
-
-                console.log('kjkjhhj');
                 fetch(url.pathname + "?" + param.toString() + "&ajax=1", {
                     headers: {
                         "X-Requested-with":"XMLHttpRequest"

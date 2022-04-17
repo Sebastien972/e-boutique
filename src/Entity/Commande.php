@@ -47,7 +47,7 @@ class Commande
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isPaid ;
+    private $isPaid = false;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -81,9 +81,11 @@ class Commande
     private $subTotalTTC;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $taxe;
+    private $StripeCheckoutSessionId;
+
+    
 
     public function __construct()
     {
@@ -257,15 +259,17 @@ class Commande
         return $this;
     }
 
-    public function getTaxe(): ?float
+    public function getStripeCheckoutSessionId(): ?string
     {
-        return $this->taxe;
+        return $this->StripeCheckoutSessionId;
     }
 
-    public function setTaxe(float $taxe): self
+    public function setStripeCheckoutSessionId(?string $StripeCheckoutSessionId): self
     {
-        $this->taxe = $taxe;
+        $this->StripeCheckoutSessionId = $StripeCheckoutSessionId;
 
         return $this;
     }
+
+    
 }

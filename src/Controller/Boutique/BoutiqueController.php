@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Boutique;
 
 use App\Entity\Produit;
 use App\Form\ShearchProduitType;
@@ -25,7 +25,7 @@ class BoutiqueController extends AbstractController
     public function index(ProduitRepository $produitRepository, CategoriesRepository $categoriesRepository, Request $request): Response
     {
         $form = $this->createForm(ShearchProduitType::class);
-        $limit = 12;
+        $limit = 8;
         $page = (int)$request->query->get('page', 1);
         $filters = $request->get('categorie');
         $total = $produitRepository->getTotalProduit($filters);

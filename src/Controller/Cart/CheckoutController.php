@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Cart;
 
 use App\Form\CheckoutFormType;
 use App\Services\CartServices;
+use App\Services\OrderServices;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,14 +29,21 @@ class CheckoutController extends AbstractController
      */
     public function index( Request $request): Response
     {
+        
         $user = $this->getUser();
 
         $cart = $this->cartServices->getFullCart();
-        $total = $this->cartServices->getTotalCart();
+        // $total = $this->cartServices->getTotalCart();
 
         if (empty($cart)){
            return $this->redirectToRoute('home');
         }
+        if ($user == null){
+            $this->addFlash('checkout_message', 'vous devez vous connecter a pour continuer');
+
+            return $this->redirectToRoute('app_login');
+         }
+        
         if (empty($user->getAdresses()->getValues())){
             $this->addFlash('checkout_message', 'vous devez ajouter une adresse pour continuer');
             return $this->redirectToRoute('adresse_new');
@@ -54,7 +62,6 @@ class CheckoutController extends AbstractController
 
         return $this->render('checkout/index.html.twig', [
             'cart' => $cart,
-            'total'=> $total,
             'form'=> $form->createView(),
         ]);
     }
@@ -64,12 +71,11 @@ class CheckoutController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route("/checkout/confirm", name="checkout_confirm")
      */
-    public function checkConfirm(Request $request)
+    public function checkConfirm(Request $request, OrderServices $orderServices)
     {
         $user = $this->getUser();
 
         $cart = $this->cartServices->getFullCart();
-        $total = $this->cartServices->getTotalCart();
 
         if (empty($cart)){
             return $this->redirectToRoute('home');
@@ -80,10 +86,12 @@ class CheckoutController extends AbstractController
 
         }
         $form = $this->createForm(CheckoutFormType::class,null,['user' => $user]);
+        // dd($cart);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() || $this->session->get('checkout_data'))
         {
+
             if ($this->session->get('checkout_data')){
                 $data = $this->session->get('checkout_data');
             }else{
@@ -93,13 +101,17 @@ class CheckoutController extends AbstractController
             $adresse = $data['adresse'];
             $transporteur = $data['transporteur'];
             $info = $data['information'];
+            $cart['checkout'] = $data;
+            // dd($cart);
+            $ref = $orderServices->saveCart($cart, $user);
+            // dd($ref);
             return $this->render('checkout/confirm.html.twig', [
                 'cart' => $cart,
-                'total'=> $total,
                 'adresse'=>$adresse,
                 'transporteur' => $transporteur,
                 'info'=>$info,
                 'form'=> $form->createView(),
+                'ref'=>$ref,
             ]);
         }
         return $this->redirectToRoute('checkout');

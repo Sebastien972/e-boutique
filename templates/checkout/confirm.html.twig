@@ -21,7 +21,9 @@
                         <h4>votre transporteur</h4>
                         <div class="content">
 
-                            {{transporteur }}
+                            {{transporteur | replace({'[spr]':'<br>','FR':'france'})| raw  }}
+                            <a href="{{ path('checkout_edit') }}" class="btn btn-outline-secondary">changer de transporteur</a>
+
 
                         </div>
                     </div>
@@ -51,10 +53,10 @@
                                 </thead>
                                 <tbody>
 
-                                {% for item in cart %}
+                                {% for item in cart.produit %}
                                     <tr>
-                                        <td>{{ item.product.nom }}<span class="product-qty"> x {{ item.quantity }}</span></td>
-                                        <td>{{ item.product.prix/100 }}</td>
+                                        <td>{{ item.produit.nom }}<span class="product-qty"> x {{ item.quantity }}</span></td>
+                                        <td>{{ item.produit.prix }} €</td>
                                     </tr>
                                 {% endfor %}
 
@@ -62,12 +64,12 @@
                                 <tfoot>
                                 <tr>
                                     <th>trasporteur</th>
-                                    <td class="product-subtotal">{{ transporteur.prix/100 }}</td>
+                                    <td class="product-subtotal">{{ transporteur.prix  }} €</td>
                                 </tr>
 
                                 <tr>
-                                    <th>Total</th>
-                                    <td class="product-subtotal">{{ (total/100) + (transporteur.prix/100) }}</td>
+                                    <th>Total TTC</th>
+                                    <td class="product-subtotal">{{ cart.data.subTotall + transporteur.prix }} €</td>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -78,11 +80,19 @@
                             </div>
 
                         </div>
-                        <button type="submit" id="checkout-button" class="btn btn-fill-out btn-block">Place Order</button>
-                    </div>
+                        
+                            <form action="{{ path('stripe_checkout_session',{reference:ref} ) }} " method="POST">
+                                <button type="submit" id="checkout-button">Checkout</button>
+                            </form>                    
+                        </div>
                 </div>
             </div>
         </div>
     </div>
 
 {% endblock %}
+ {% block scriptPage %}
+     <script src="https://js.stripe.com/v3/"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
+    {% endblock %}

@@ -32,15 +32,7 @@ class DetaileCommande
      */
     private $quantity;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $prixTotal;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $taxe;
+   
 
     /**
      * @ORM\Column(type="float")
@@ -94,29 +86,7 @@ class DetaileCommande
         return $this;
     }
 
-    public function getPrixTotal(): ?float
-    {
-        return $this->prixTotal;
-    }
-
-    public function setPrixTotal(float $prixTotal): self
-    {
-        $this->prixTotal = $prixTotal;
-
-        return $this;
-    }
-
-    public function getTaxe(): ?float
-    {
-        return $this->taxe;
-    }
-
-    public function setTaxe(float $taxe): self
-    {
-        $this->taxe = $taxe;
-
-        return $this;
-    }
+   
 
     public function getPrixTotalTTC(): ?float
     {

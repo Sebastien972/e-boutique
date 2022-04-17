@@ -37,10 +37,7 @@ class DetaileCart
      */
     private $prixTotal;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $taxe;
+    
 
     /**
      * @ORM\Column(type="float")
@@ -48,10 +45,10 @@ class DetaileCart
     private $prixTotalTTC;
 
     /**
-     * @ORM\ManyToOne(targetEntity=commande::class, inversedBy="detaileCarts")
+     * @ORM\ManyToOne(targetEntity=cart::class, inversedBy="detaileCarts")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $commande;
+    private $cart;
 
     public function getId(): ?int
     {
@@ -106,17 +103,6 @@ class DetaileCart
         return $this;
     }
 
-    public function getTaxe(): ?float
-    {
-        return $this->taxe;
-    }
-
-    public function setTaxe(float $taxe): self
-    {
-        $this->taxe = $taxe;
-
-        return $this;
-    }
 
     public function getPrixTotalTTC(): ?float
     {
@@ -130,14 +116,14 @@ class DetaileCart
         return $this;
     }
 
-    public function getCart(): ?commande
+    public function getCart(): ?Cart
     {
-        return $this->commande;
+        return $this->cart;
     }
 
-    public function setCart(?commande $commande): self
+    public function setCart(?Cart $cart): self
     {
-        $this->commande = $commande;
+        $this->cart = $cart;
 
         return $this;
     }

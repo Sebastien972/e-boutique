@@ -60,12 +60,12 @@ class Cart
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=DetaileCart::class, mappedBy="commande")
+     * @ORM\OneToMany(targetEntity=DetaileCart::class, mappedBy="cart")
      */
     private $detaileCarts;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cart")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -80,10 +80,7 @@ class Cart
      */
     private $subTotalTTC;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $taxe;
+    
 
     public function __construct()
     {
@@ -257,15 +254,5 @@ class Cart
         return $this;
     }
 
-    public function getTaxe(): ?float
-    {
-        return $this->taxe;
-    }
-
-    public function setTaxe(float $taxe): self
-    {
-        $this->taxe = $taxe;
-
-        return $this;
-    }
+    
 }

@@ -4,7 +4,6 @@
 
 {% block body %}
     <h1>Create new Adresse</h1>
-    {% if app.flashes %}
 
     {% for message in app.flashes('checkout_message') %}
 
@@ -15,7 +14,6 @@
     </div>
     {% endfor %}
 
-    {% endif %}
 
     {{ include('adresse/_form.html.twig') }}
 

@@ -18,7 +18,7 @@
                         <h4>Your carrier</h4>
                         <div class="content">
 
-                            {{ form_widget(form.transporteur) }}
+                            {{ form_widget(form.transporteur)| replace({'[spr]':'<br>'})| raw }}
 
                         </div>
                     </div>
@@ -45,23 +45,20 @@
                                 </thead>
                                 <tbody>
 
-                                {% for item in cart %}
+                                {% for item in cart.produit %}
                                 <tr>
-                                    <td>{{ item.product.nom }}<span class="product-qty"> x {{ item.quantity }}</span></td>
-                                    <td>{{ item.product.prix/100 }}</td>
+                                    <td>{{ item.produit.nom }}<span class="product-qty"> x {{ item.quantity }}</span></td>
+                                    <td>{{ cart.data.subTotall }}</td>
                                 </tr>
                                 {% endfor %}
 
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <th>SubTotal HT</th>
-                                    <td class="product-subtotal">$100</td>
-                                </tr>
+                               
 
                                 <tr>
                                     <th>Total</th>
-                                    <td class="product-subtotal">{{ total/100 }}</td>
+                                    <td class="product-subtotal">{{ cart.data.subTotall }}</td>
                                 </tr>
                                 </tfoot>
                             </table>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Cart;
 
 use App\Services\CartServices;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,12 +20,12 @@ class CartController extends AbstractController
     {
         $cart = $cartServices->getFullCart();
 
-        $total =  $cartServices->getTotalCart();
+        // $total =  $cartServices->getTotalCart();
 
 
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
-            'total'=> $total,
+            // 'total'=> $total,
         ]);
 
 
