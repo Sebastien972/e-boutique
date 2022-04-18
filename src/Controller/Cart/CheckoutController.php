@@ -102,7 +102,7 @@ class CheckoutController extends AbstractController
             $transporteur = $data['transporteur'];
             $info = $data['information'];
             $cart['checkout'] = $data;
-            // dd($cart);
+            dd($cart);
             $ref = $orderServices->saveCart($cart, $user);
             // dd($ref);
             return $this->render('checkout/confirm.html.twig', [
