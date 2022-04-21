@@ -2,18 +2,18 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Commande;
+use App\Entity\Cart;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class CommandeCrudController extends AbstractCrudController
+class CartCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Commande::class;
+        return Cart::class;
     }
 
     public function configureFields(string $pageName): iterable

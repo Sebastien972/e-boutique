@@ -130,7 +130,7 @@ class Cart
 
     public function getTransporteurPrix(): ?float
     {
-        return $this->transporteurPrix;
+        return $this->transporteurPrix*100;
     }
 
     public function setTransporteurPrix(float $transporteurPrix): self
@@ -244,7 +244,7 @@ class Cart
 
     public function getSubTotalTTC(): ?float
     {
-        return $this->subTotalTTC;
+        return $this->subTotalTTC*100;
     }
 
     public function setSubTotalTTC(float $subTotalTTC): self
