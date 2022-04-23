@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
  */
@@ -24,6 +25,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
     private $email;
 
@@ -46,6 +48,10 @@ class Contact
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {

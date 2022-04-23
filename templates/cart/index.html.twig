@@ -15,29 +15,32 @@
                                 <th class="product-name">Product</th>
                                 <th class="product-price">Price</th>
                                 <th class="product-quantity">Quantity</th>
-                                <th class="product-subtotal">Total</th>
+                                   <th class="product-subtotal">Total</th>
                                 <th class="product-remove">Remove</th>
                             </tr>
                             </thead>
                             <tbody>
 <pre>
-    {{ dump(cart) }}
+    {{ dump() }}
+    
 </pre>
-                            {% for items in cart.produit %}
-                            <tr>
-                                <td class="product-thumbnail"><a href="#"><img style="height: 50px;" src="/assets/upload/produit/{{ items.produit.image }}" alt="product1"></a></td>
-                                <td class="product-name" data-title="Product"><a href="{{ path('produit',{slug: items.produit.slug}) }}">{{ items.produit.nom }}</a></td>
-                                <td class="product-price" data-title="Price">{{ items.produit.prix}}</td>
-                                <td class="product-quantity" data-title="Quantity">
-                                    <div class="quantity">
-                                        <a type="button" value="-" class="minus" href="{{ path('remove',{id: items.produit.id}) }}">-</a>
-                                        <input type="text" name="quantity" value="{{ items.quantity }}" title="Qty" class="qty" size="4">
-                                        <a type="button" value="+" class="minus" href="{{ path('add',{id: items.produit.id}) }}">+</a>
-                                    </div></td>
-                                <td class="product-subtotal" data-title="Total">{{ items.quantity * items.produit.prix }}€</td>
-                                <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
-                            </tr>
-                            {% endfor %}
+                                {% if cart.produit is defined %}
+                                    {% for items in cart.produit %}
+                                        <tr>
+                                            <td class="product-thumbnail"><a href="#"><img style="height: 50px;" src="/assets/upload/produit/{{ items.produit.image }}" alt="product1"></a></td>
+                                            <td class="product-name" data-title="Product"><a href="{{ path('produit',{slug: items.produit.slug}) }}">{{ items.produit.nom }}</a></td>
+                                            <td class="product-price" data-title="Price">{{ items.produit.prix}}</td>
+                                            <td class="product-quantity" data-title="Quantity">
+                                                <div class="quantity">
+                                                    <a type="button" value="-" class="minus" href="{{ path('remove',{id: items.produit.id}) }}">-</a>
+                                                    <input type="text" name="quantity" value="{{ items.quantity }}" title="Qty" class="qty" size="4">
+                                                    <a type="button" value="+" class="minus" href="{{ path('add',{id: items.produit.id}) }}">+</a>
+                                                </div></td>
+                                            <td class="product-subtotal" data-title="Total">{{ items.quantity * items.produit.prix }}€</td>
+                                            <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
 
                             </tbody>
                             <tfoot>

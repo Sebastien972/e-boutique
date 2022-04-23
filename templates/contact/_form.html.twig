@@ -1,4 +1,29 @@
+<div class="form-group">
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {# {{ form_widget(form) }} #}
+   
+    <div class="row">
+        <div class="col-md-6">
+            {{form_row(form.name)}}
+        </div>
+        <div class="col-md-6">
+            {{form_row(form.email)}}
+        </div>
+        <div class="col-md-12">
+            {{form_row(form.phone)}}
+        </div>
+        <div class="col-md-12">
+            {{form_row(form.subject)}}
+        </div>
+                <div class="col-md-12">
+            {{form_row(form.message)}}
+        </div>
+        
+
+    </div>
+
+
+    
+    <button class="btn btn-outline-secondary">{{ button_label|default('Envoyer') }}</button>
 {{ form_end(form) }}
+</div>

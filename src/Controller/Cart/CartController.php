@@ -19,7 +19,7 @@ class CartController extends AbstractController
     public function index(CartServices $cartServices): Response
     {
         $cart = $cartServices->getFullCart();
-
+// dd($cart);
         // $total =  $cartServices->getTotalCart();
 
 
