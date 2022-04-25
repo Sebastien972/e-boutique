@@ -94,7 +94,7 @@ class CartServices
                 if ($quantity > $produit->getQuantity()) {
                     $quantity = $produit->getQuantity();
                     $panier[$id] = $quantity;
-                    $this->updateCart();
+                    $this->updateCart($panier);
 
                 }
                 $dataPanier['produit'][] = [
