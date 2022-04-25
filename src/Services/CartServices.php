@@ -91,7 +91,12 @@ class CartServices
         foreach ($panier as $id => $quantity) {
             $produit = $this->produitRepository->find($id);
             if ($produit){
+                if ($quantity > $produit->getQuantity()) {
+                    $quantity = $produit->getQuantity();
+                    $panier[$id] = $quantity;
+                    $this->updateCart();
 
+                }
                 $dataPanier['produit'][] = [
                     'produit'=> $produit,
                     'quantity'=>$quantity
